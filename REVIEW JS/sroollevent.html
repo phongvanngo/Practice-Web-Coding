@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>
+        JQuery
+        | Detecting when user scrolls to bottom of div.
+    </title>
+</head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js">
+</script>
+
+<body style="text-align:center;" id="body">
+    <style>
+        #wrapper {
+            height: 500px;
+            overflow: scroll;
+        }
+    </style>
+    <h1 style="color:green;">
+        GeeksForGeeks
+    </h1>
+    <p id="GFG_UP" style="font-size: 17px; 
+              font-weight: bold;">
+    </p>
+    <div id="wrapper">
+        <div class="div">
+            <h1>GeeksforGeeks</h1>
+            <h1>GeeksforGeeks</h1>
+            <h1>GeeksforGeeks</h1>
+            <h1>GeeksforGeeks</h1>
+            <h1>GeeksforGeeks</h1>
+            <h1>GeeksforGeeks</h1>
+            <h1>GeeksforGeeks</h1>
+            <h1>GeeksforGeeks</h1>
+            <h1>GeeksforGeeks</h1>
+            <h1>GeeksforGeeks</h1>
+            <h1>GeeksforGeeks</h1>
+            <h1>GeeksforGeeks</h1>
+            <h1>GeeksforGeeks</h1>
+            <h1>GeeksforGeeks</h1>
+            <h1>GeeksforGeeks</h1>
+            <h1>GeeksforGeeks</h1>
+            <h1>GeeksforGeeks</h1>
+            <h1>GeeksforGeeks</h1>
+            <h1>GeeksforGeeks</h1>
+            <h1>GeeksforGeeks</h1>
+            <h1>GeeksforGeeks</h1>
+        </div>
+    </div>
+    <script>
+        $('#GFG_UP').text(
+            'Scroll till bottom to get alert!');
+
+        // $('wrapper').on('scroll', function () {
+        //     if ($('wrapper').scrollTop() >= $(
+        //         '.div').offset().top + $('.div').
+        //             outerHeight() - $('wrapper').innerHeight) {
+
+        //         alert('You reached the end of the DIV');
+        //     }
+        // });
+
+        // let div = document.getElementById('wrapper');
+        // div.addEventListener('scroll', () => {
+        //     // div.scrollTop = div.scrollHeight - div.clientHeight;
+        //     if (div.scrollTop == div.scrollHeight - div.clientHeight) {
+        //         window.alert("bottome");
+        //     }
+        //     console.log(div.scrollTop);
+        //     console.log(div.scrollHeight);
+        //     console.log(div.clientHeight);
+        // })
+
+        // $('#wrapper').on('scroll', function () {
+        //     // console.log($(this).innerHeight());
+        //     console.log($(this)[0].scrollHeight);
+        //     if ($(this).scrollTop() + $(this).innerHeight() >= $(this)[0].scrollHeight) {
+        //         alert('end reached');
+        //     }
+        // })
+        function getInnerHeight(elm) {
+            var computed = getComputedStyle(elm),
+                padding = parseInt(computed.paddingTop) + parseInt(computed.paddingBottom);
+
+            return elm.clientHeight - padding
+        }
+
+        let div = document.getElementById('wrapper');
+        const a = div.scrollHeight;
+        const b = getInnerHeight(div);
+        console.log(a, b);
+
+        div.addEventListener("scroll", () => {
+            console.log(div.scrollTop + b, a);
+            if (div.scrollTop + b + 1 >= a) {
+                window.alert("done");
+            }
+        })
+    </script>
+</body>
+
+</html>
