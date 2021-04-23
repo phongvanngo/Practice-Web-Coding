@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        window.onload = function () {
+                var buttonFile = document.getElementById("buttonFile");
+                var file = document.getElementById("file");
+
+                buttonFile.onclick = function () {
+                    document.getElementById("file").click();
+                };
+
+                file.onchange = function (e) {
+                    if (this.files && this.files[0]) {
+                        alert(JSON.stringify(this.files[0]));
+                    }
+                };
+            };
+    </script>
+    <input type="file" id="file" accept=".jpg, .png, .jpeg" >
+</body>
+
+</html>
